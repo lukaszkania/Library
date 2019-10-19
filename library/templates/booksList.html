@@ -1,0 +1,28 @@
+<h1>Hello</h1>
+<ul>
+{% for book in booksList %}
+    <li>
+        Title: {{book.title}} <br/>
+        Autors:
+        {% for author in book.authors.all%}
+            <ol>
+                {{author.authorName}} 
+            </ol>    
+        {% endfor %}
+        Language: {{book.language}} <br/>
+        Page count: {{book.page_count}} <br/>
+        Small thumbnail: <a href={{book.small_thumbnail}} target="_blank">Small thumbnail</a> <br/>
+        Thumbnail: <a href={{book.thumbnail}} target="_blank">Thumbnail</a> <br/>
+        Industry identifiers: 
+        <ol>
+        {% for industrie in book.industries.all%}
+            <li>
+                Type: {{industrie.type_of_industrie}} 
+                <br/>
+                Identifier: {{industrie.identifier}}
+            </li>
+        {% endfor %}
+        </ol>
+    </li>
+{% endfor %}
+</ul>
