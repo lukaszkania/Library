@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator 
+from django.urls import reverse
 
 # Create your models here.
 class Book(models.Model):
@@ -11,6 +12,9 @@ class Book(models.Model):
     thumbnail = models.CharField(max_length=1000)
     authors = models.ManyToManyField("author.Author")
     industries = models.ManyToManyField("industrie.Industrie")
+
+    def get_absolute_url(self):
+        return reverse('books-list')
 
     def __str__(self):
         return self.title

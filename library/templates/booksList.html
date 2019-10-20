@@ -1,4 +1,9 @@
 <h1>Hello</h1>
+<a href={% url "add-new-book" %}>Add book</a>
+<form action="{% url 'books-list' %}" method="get">
+    <input name="question" type="text" placeholder="Search by title, author, published date or language...">
+</form>
+
 <ul>
 {% for book in booksList %}
     <li>
@@ -9,6 +14,7 @@
                 {{author.authorName}} 
             </ol>    
         {% endfor %}
+        Published date: {{book.published_date}} <br/>
         Language: {{book.language}} <br/>
         Page count: {{book.page_count}} <br/>
         Small thumbnail: <a href={{book.small_thumbnail}} target="_blank">Small thumbnail</a> <br/>
