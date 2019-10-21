@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'books.apps.BooksConfig', # Added books app
     'author.apps.AuthorConfig', # Added author app
-    'industrie.apps.IndustrieConfig' # Added industrie app
+    'industrie.apps.IndustrieConfig', # Added industrie app
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
