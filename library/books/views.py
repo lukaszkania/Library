@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.views.generic.list import ListView
 from books.models import Book
 from django.views.generic.edit import CreateView
-from django.urls import reverse
 from django.db.models import Q 
-from author.models import Author
+from services import services
 
 # Create your views here.
 class AllBooksView(ListView):
@@ -21,11 +20,21 @@ class AllBooksView(ListView):
             Q(published_date__icontains=searchedPhrase) |
             Q(authors__authorName__icontains=searchedPhrase)
             ) 
-        return Book.objects.all()
+        else:
+            return Book.objects.all()
     
 class AddNewBookView(CreateView):
     model = Book
     template_name = "addBook.html"
     fields = ["title", "published_date", "page_count", "language", "small_thumbnail", "thumbnail", "authors", "industries"]
 
+
+class ImportBooksFromAPIView(ListView):
+    template_name = "importBooksFromApi.html"
+    model = Book
+ 
+    def get_queryset(self):
+        searchedPhrase = self.request.GET.get("questionPhrase")
+        services.import_books_from_API(self.request, question=searchedPhrase)
+        return Book.objects.all()
 

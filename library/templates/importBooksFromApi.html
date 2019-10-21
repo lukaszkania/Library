@@ -1,0 +1,6 @@
+<h1>import-books-from-api</h1>
+<a href={% url "add-new-book" %}>Add book</a>
+<a href={% url "books-list" %}>Back to list of all books</a>
+<form action="{% url 'import-books-from-api' %}" method="get">
+    <input name="questionPhrase" type="text" placeholder="What book are You searching for?" required>
+</form>

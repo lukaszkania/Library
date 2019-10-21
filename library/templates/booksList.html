@@ -1,5 +1,6 @@
 <h1>Hello</h1>
 <a href={% url "add-new-book" %}>Add book</a>
+<a href={% url "import-books-from-api" %}>Import books from API</a>
 <form action="{% url 'books-list' %}" method="get">
     <input name="question" type="text" placeholder="Search by title, author, published date or language...">
 </form>

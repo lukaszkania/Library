@@ -8,8 +8,8 @@ class Book(models.Model):
     published_date = models.CharField(max_length=11, null=False)
     page_count = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     language = models.CharField(max_length=10, null=False)
-    small_thumbnail = models.CharField(max_length=1000)
-    thumbnail = models.CharField(max_length=1000)
+    small_thumbnail = models.CharField(max_length=1000, null=True, default="Undefined")
+    thumbnail = models.CharField(max_length=1000, null=True, default="Undefined")
     authors = models.ManyToManyField("author.Author")
     industries = models.ManyToManyField("industrie.Industrie")
 
